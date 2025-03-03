@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Govtech Assessment {% endblock %}
+
+{% block content %}
+<form id="form_calc" method="POST" enctype="x-www-form-urlencoded" onsubmit="formatForm()">
+  <input type="number" id="nb_num1" name="nb_num1" step="any">
+  <input type="number" id="nb_num2" name="nb_num2" step="any">
+
+  <input type="submit" id="btn_add" value="add" formaction="/v1/addition">
+  <input type="submit" id="btn_subtract" value="subtract" formaction="/v1/subtraction">
+</form>
+{% endblock %}
+
+{% block scripts%}
+  function formatForm(){
+    var num1 = document.getElementById("nb_num1").value;
+    var num2 = document.getElementById("nb_num2").value;
+
+    if (num1 == null || num1 == "") {
+      document.getElementById("nb_num1").value = 0;
+    }
+
+    if (num2 == null || num2 == "") {
+          document.getElementById("nb_num2").value = 0;
+    }
+  }
+{% endblock %}
